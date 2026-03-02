@@ -1,0 +1,70 @@
+---
+description: Radio, Checkbox, Toggle rules – derived from Figma
+globs: **/*{Radio,Checkbox,Toggle,Switch,Choice}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Radio / Checkbox / Toggle
+
+**Figma:** [Radio / Checkbox / Toggle](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10423&p=f&m=dev)
+
+Radio, checkbox, toggle specs, states, and sizes below are derived from Figma node 128:10423.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Unselected border | `--border-base-default` |
+| Selected fill | `--bg-brand-default` |
+| Selected border | `--border-brand-default` |
+| Checkmark | `--text-brand-on-brand` |
+| Track off | `--bg-base-tertiary` |
+| Track on | `--bg-brand-default` |
+| Handle | `--bg-base-default` |
+| Label | `--text-base-default` |
+
+---
+
+## Radio Button
+
+| State | Border | Fill |
+|-------|--------|------|
+| Unselected | `--border-base-default` | Transparent |
+| Selected | `--border-brand-default` | `--bg-brand-default` |
+
+- **Size:** ≥20px; 40×40px click target.
+- **Label:** `--text-base-default`; Space/200 from control.
+
+---
+
+## Checkbox
+
+| State | Border | Fill |
+|-------|--------|------|
+| Unselected | `--border-base-default` | Transparent |
+| Selected | `--border-brand-default` | `--bg-brand-default`; `--text-brand-on-brand` checkmark |
+| Indeterminate | Per Figma | Half fill |
+
+- **Radius:** Radius/100 (4px).
+- **Size:** ≥20px; 40×40px click target.
+
+---
+
+## Toggle Switch
+
+| State | Track | Handle |
+|-------|-------|--------|
+| Off | `--bg-base-tertiary` | `--bg-base-default` circle, Shadow sm |
+| On | `--bg-brand-default` | Same |
+
+- **Radius:** Radius/Full or pill (9999px).
+- **Size:** ~40×24px track; handle ≥20px.
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Do not invent variants; implement only what exists in Figma node 128:10423.

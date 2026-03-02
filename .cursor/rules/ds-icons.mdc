@@ -1,0 +1,106 @@
+---
+description: Qure icon set – derived from Figma; sizing, coloring, accessibility
+globs: **/*{Icon,icon,icons}.*
+alwaysApply: false
+---
+
+# Icon Set
+
+**Figma:** [Qure Icon Set](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=7809-18809&p=f&m=dev)
+
+Sizes, colors, and categories below are derived from Figma node 7809:18809.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Context | Token |
+|---------|-------|
+| Default | `--text-base-default` |
+| Secondary | `--text-base-secondary` |
+| Disabled | `--text-disabled-default` |
+| Brand/Primary | `--text-brand-default` |
+| On brand (CTA) | `--text-brand-on-brand` |
+| Danger | `--text-danger-default` |
+| Success | `--text-success-default` |
+| Warning | `--text-warning-default` |
+
+---
+
+## Rules
+
+1. **Source:** Icons from Qure Figma design system node above. Export individual icons as SVG.
+2. **Style:** Monochrome outline (stroke-based). Apply color via CSS/tokens.
+3. **Consistency:** Use this set throughout. Do not mix with other icon libraries.
+
+---
+
+## Sizing
+
+| Size | Dimensions | Use case |
+|------|------------|----------|
+| Small | 16×16px | Inline with text, inputs, compact controls |
+| Medium | 20×20px | Buttons, nav items, list actions |
+| Large | 24×24px | Prominent actions, headers, empty states |
+| XLarge | 32×32px | Hero icons, feature highlights |
+
+- **Min touch target:** 40×40px for icon-only buttons; size icon 20–24px and add padding.
+- **Inline:** Match icon height to text line-height (e.g. 16px icon with 14px text).
+
+---
+
+## Coloring
+
+Use **only** tokens from `design-system-tokens.mdc`. Implementation: `color: var(--text-base-default)` or `fill: currentColor` with `color` on parent. Never hardcode hex for icons.
+
+| Scenario | Icon color |
+|----------|------------|
+| Primary action (CTA button) | `--text-brand-on-brand` |
+| Secondary/ghost button | `--text-base-default` |
+| Input leading/trailing | `--text-base-secondary` |
+| Navigation, sidebar | `--text-base-default` or `--text-base-secondary` |
+| Disabled control | `--text-disabled-default` |
+| Alert/error | `--text-danger-default` |
+| Success | `--text-success-default` |
+| Warning | `--text-warning-default` |
+| Active/selected nav item | `--text-brand-default` |
+
+---
+
+## Icon categories (reference)
+
+- **Navigation:** Arrows, chevrons, home, menu, back, forward
+- **Actions:** Search, filter, settings, edit, save, print, refresh
+- **User:** Profile, users, lock, unlock, notifications
+- **Files:** Document, folder, upload, download
+- **Media:** Play, pause, volume, microphone, camera, chat
+- **Status:** Info, warning, error, checkmark, star
+- **Data:** Charts, analytics
+- **Input:** Calendar, clock, checkbox, radio, toggle
+
+---
+
+## Implementation
+
+### SVG usage
+```tsx
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+  <path d="..." />
+</svg>
+```
+Use `currentColor` for stroke/fill so parent `color` controls the icon color.
+
+### Icon-only buttons
+- Add `aria-label` describing the action.
+- Ensure min 40×40px click target.
+- Use focus-visible ring.
+
+---
+
+## Implementation guidelines
+
+- Always prefer the Qure icon set; check Figma before using any other source.
+- Export icons as SVG from Figma; keep stroke/fill compatible with `currentColor`.
+- A11y: `aria-label` for icon-only; `aria-hidden="true"` when decorative.
+- Theme: Icons inherit from theme; no hardcoded light/dark colors.
+- Do not invent variants; implement only what exists in Figma node 7809:18809.

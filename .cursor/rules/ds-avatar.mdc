@@ -1,0 +1,83 @@
+---
+description: Avatar component rules – derived from Figma
+globs: **/*{Avatar,UserAvatar,ProfilePic,ProfileImage}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Avatar
+
+**Figma:** [Avatar](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10526&p=f&m=dev)
+
+Sizes, shapes, content types, and grouping below are derived from Figma node 128:10526.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Initial bg | `--bg-brand-default` |
+| Initial text | `--text-brand-on-brand` |
+| Overflow indicator | `--bg-base-tertiary`, `--text-base-secondary` |
+
+---
+
+## Structure
+
+### Content types
+| Type | Description |
+|------|-------------|
+| Image | Profile photo; `rounded-full object-cover` |
+| Initial | Single character only (e.g. A, B, C). Do not use multiple (e.g. AA, BB, CC)—text would overflow. |
+
+### Initial styling
+- **Background:** `--bg-brand-default`.
+- **Text:** `--text-brand-on-brand`.
+- **Font:** Medium or Semibold.
+
+---
+
+## Sizes
+
+| Size | Dimensions |
+|------|------------|
+| Large | w-12 h-12 (48px) |
+| Medium | w-10 h-10 (40px) – Default |
+| Small | w-8 h-8 (32px) |
+
+---
+
+## Shapes
+
+| Shape | Styling |
+|-------|---------|
+| Circle | `rounded-full` |
+| Square | Radius/100–200 |
+
+---
+
+## Grouping
+
+| Mode | Gap | Notes |
+|------|-----|-------|
+| Spaced | Space/100–200 | Between avatars |
+| Overlap | Negative margin | Avatars overlap |
+
+### Overflow indicator
+- **Content:** "+N" when there are more members.
+- **Style:** Smaller avatar or pill; `--bg-base-tertiary` background, `--text-base-secondary`.
+- **Use:** Additional members count.
+
+---
+
+## With context
+
+- Can sit next to Title + Description.
+- Align with Space/200–300 gap.
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Do not invent variants; implement only what exists in Figma node 128:10526.

@@ -1,0 +1,78 @@
+---
+description: Tag / Label / Chip rules – derived from Figma
+globs: **/*{Tag,Label,Chip,Pill,Token}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Tags
+
+**Figma:** [Tags](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10523&p=f&m=dev)
+
+Shape, variants, semantic colors, and token mappings below are derived from Figma node 128:10523.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Neutral bg | `--bg-base-tertiary` |
+| Neutral border | `--border-base-default` |
+| Neutral text | `--text-base-default` |
+| Success light | `--bg-success-tertiary`, `--text-success-default` |
+| Success medium | `--bg-success-default`, `--text-brand-on-brand` |
+| Warning light | `--bg-warning-tertiary`, `--text-warning-default` |
+| Warning medium | `--bg-warning-default`, `--text-base-default` |
+| Error light | `--bg-danger-tertiary`, `--text-danger-default` |
+| Error medium | `--bg-danger-default`, `--text-brand-on-brand` |
+| Counter | `--bg-brand-tertiary` |
+
+---
+
+## Structure
+
+- **Shape:** Rounded rectangle; Radius/200 or Radius/Full (pill).
+- **Padding:** Space/100–200.
+
+---
+
+## Variants (from Figma)
+
+### Loading / placeholder
+- **Background:** `--bg-base-tertiary`; border `--border-base-default`.
+- **Content:** Spinner icon + "Label..." text.
+- **Use:** While content is loading.
+
+### Informational / warning
+- **Background:** `--bg-base-tertiary`; border `--border-base-default`.
+- **Content:** Exclamation icon + "Label".
+- **Use:** Warnings, info callouts.
+
+### Neutral (solid gray)
+- **Background:** `--bg-base-tertiary`.
+- **Text:** `--text-base-default`.
+- **Use:** Neutral labels.
+
+### Color-coded (semantic)
+Each: Light, Medium, Dark variation. Small solid circle icon left of "Label".
+
+| Variant | Light | Medium |
+|---------|-------|--------|
+| Green (success) | `--bg-success-tertiary` bg, `--text-success-default` text | `--bg-success-default` bg, `--text-brand-on-brand` text |
+| Yellow/Orange (warning) | `--bg-warning-tertiary` bg, `--text-warning-default` text | `--bg-warning-default` bg, `--text-base-default` text |
+| Red (error) | `--bg-danger-tertiary` bg, `--text-danger-default` text | `--bg-danger-default` bg, `--text-brand-on-brand` text |
+
+**Icon:** Small solid circle in matching semantic color.
+
+### Counter tag
+- **Size:** Small.
+- **Background:** `--bg-brand-tertiary`.
+- **Text:** "+N" (e.g. "+2"); overflow indicator.
+- **Use:** Additional items count beside a tag list.
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Do not invent variants; implement only what exists in Figma node 128:10523.

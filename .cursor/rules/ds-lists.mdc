@@ -1,0 +1,48 @@
+---
+description: Lists & Content rules – derived from Figma
+globs: **/*{List,ListItem}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Lists & Content
+
+**Figma:** [Lists](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=7641-2142&p=f&m=dev)
+
+List structure, rows, dividers, and placeholders below are derived from Figma component library node 7641:2142.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Row bg | `--bg-base-default` or `--bg-base-secondary` |
+| Divider | `--border-base-default` |
+| Placeholder | `--bg-base-tertiary` |
+
+---
+
+## Structure
+
+### List items
+- **Background:** `--bg-base-default` or `--bg-base-secondary`.
+- **Padding:** Space/200–300.
+
+### Dividers
+- **Style:** `--border-base-default` 1px.
+
+### Image/media placeholders
+- **Fill:** `--bg-base-tertiary`.
+
+---
+
+## Spacing
+
+- Consistent Space scale (4, 8, 12, 16, 24) for gaps and padding.
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Do not invent variants; implement only what exists in Figma node 7641:2142.

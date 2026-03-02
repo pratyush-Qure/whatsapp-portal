@@ -4,23 +4,53 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:3001": "next dev -p 3001",
+    "dev:3002": "next dev -p 3002",
+    "dev:local": "supabase start && next dev",
+    "dev:all": "supabase start && QUEUE_WORKER_MODE=dedicated concurrently -k -n APP,WORKER -c auto \"node scripts/dev-app-port.js\" \"npm run worker:queue\"",
+    "worker:queue": "tsx src/worker/queue-worker.ts",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:start": "supabase start",
+    "db:stop": "supabase stop",
+    "db:reset": "supabase db reset",
+    "db:types": "supabase gen types typescript --local > src/types/database.ts",
+    "infra:up": "supabase start && docker compose up -d",
+    "infra:down": "supabase stop && docker compose down",
+    "local:up": "supabase start && docker compose up -d",
+    "local:down": "supabase stop && docker compose down"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "@supabase/ssr": "^0.8.0",
+    "@supabase/supabase-js": "^2.95.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "dotenv": "^17.3.1",
+    "jsonpath-plus": "^10.4.0",
+    "lodash": "^4.17.23",
+    "nanoid": "^5.1.6",
     "next": "16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-hook-form": "^7.71.1",
+    "tailwind-merge": "^3.4.1",
+    "twilio": "^5.12.1",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/lodash": "^4.17.23",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^9.2.1",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "supabase": "^2.76.9",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

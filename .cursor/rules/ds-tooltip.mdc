@@ -1,0 +1,74 @@
+---
+description: Tooltip component rules – derived from Figma
+globs: **/*{Tooltip,ToolTip,Hint,HelpTip}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Tooltip
+
+**Figma:** [Tooltip](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=280-23459&p=f&m=dev)
+
+Structure, placements, styling, and behavior below are derived from Figma node 280:23459.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Container | `--bg-base-default` or `--bg-base-tertiary` |
+| Border | `--border-base-default` |
+| Title | `--text-base-default` |
+| Body | `--text-base-secondary` |
+
+---
+
+## Structure
+
+| Element | Style |
+|---------|-------|
+| Title | Bold; larger font size; `--text-base-default` |
+| Body text | Regular weight; smaller font size; `--text-base-secondary` |
+| Pointer/arrow | Triangular; extends from center of edge; points toward trigger |
+
+---
+
+## Placements
+
+| Placement | Tooltip position | Pointer |
+|-----------|------------------|---------|
+| Top | Below trigger | Extends upward from top edge |
+| Bottom | Above trigger | Extends downward from bottom edge |
+| Left | Right of trigger | Extends leftward from left edge |
+| Right | Left of trigger | Extends rightward from right edge |
+
+Auto-flip on viewport edge.
+
+---
+
+## Styling
+
+| Property | Value |
+|----------|-------|
+| Container | `--bg-base-default` or `--bg-base-tertiary` |
+| Border | Optional `--border-base-default` |
+| Shadow | Shadow sm or md |
+| Padding | Space/200–300 |
+| Max width | max-w-xs |
+
+---
+
+## Behavior
+
+- **Trigger:** Hover, focus, or focus-visible.
+- **Show:** After ~300ms delay.
+- **Hide:** On mouse leave.
+- **Rule:** Never block interactive elements.
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- A11y: `role="tooltip"`; `aria-describedby` on trigger; keyboard-dismissable.
+- Do not invent variants; implement only what exists in Figma node 280:23459.

@@ -1,0 +1,148 @@
+---
+description: Qure composition guide – derived from Figma
+globs: **/*{Page,Layout,Form,Dashboard,Sidebar,Chat,Conversation}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Composition Guide
+
+**Figma:** [Composition](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=83-32628&p=f&m=dev) | [Chat interface](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=4309-529&p=f&m=dev)
+
+Layout patterns, nav bar, footer, hero, cards, forms, dashboard, sidebar, and chat interface below are derived from Figma nodes 83:32628 and 4309:529.
+
+---
+
+## Foundation elements (link to tokens)
+
+| Element | Source |
+|---------|--------|
+| Typography | design-system-tokens.mdc |
+| Colors | design-system-tokens.mdc |
+| Spacing | Space scale (4, 8, 12, 16, 24, 32, 48) |
+| Shadows | design-system-tokens.mdc |
+| Border-radius | Radius tokens |
+| Icons | ds-icons.mdc |
+
+---
+
+## Navigation bar
+
+- **Height:** ~64px; Space/800 padding.
+- **Layout:** Logo left; nav items center/right; search + CTA right.
+- **Background:** `--bg-base-default` or `--bg-base-secondary`.
+- **Items:** Space/400–600 gap; active `--text-brand-default`.
+- **Search:** Compact input; CTA: primary button.
+
+---
+
+## Footer
+
+- **Layout:** Two-column; branding + links.
+- **Left:** Logo + social icons; **Right:** Link columns (4 cols).
+- **Gap:** Space/600–1200 between columns.
+- **Links:** `--text-base-secondary`; hover `--text-brand-default`.
+
+---
+
+## Hero / content block
+
+- Centered title + subtitle.
+- Large padding: Space/1200–1600.
+- Background: `--bg-base-secondary` or `--bg-base-default`.
+
+---
+
+## Questionnaire / rating form
+
+- Section: Heading + description.
+- Radio groups: Yes/No per question.
+- Vertical rhythm: Space/400–600 between sections; Space/200–300 within groups.
+
+---
+
+## Cards
+
+| Type | Structure |
+|------|-----------|
+| Product | Image placeholder; title; description; CTA button |
+| Pricing | Prominent price; supporting text |
+| Testimonial | Quote; author; title; optional Edit button |
+
+**Spacing:** Space/200–400 internal padding; Space/400–600 card gap.
+
+---
+
+## Image gallery
+
+- Thumbnails: row of small squares.
+- Main: larger placeholder to the right or below.
+- Gap: Space/200–400.
+
+---
+
+## Alerts
+
+| Type | Container | Icon | Button |
+|------|-----------|------|--------|
+| Success | `--bg-success-tertiary` | `--text-success-default` | `--bg-success-default` |
+| Error | `--bg-danger-tertiary` | `--text-danger-default` | `--bg-danger-default` |
+| Warning | `--bg-warning-tertiary` | `--text-warning-default` | `--bg-warning-default` |
+
+---
+
+## Form composition (multi-field)
+
+- Title: "Shipping Details" or equivalent.
+- Two-column layout when space allows.
+- Fields: Full Name, Email, Phone, Address, City, State, Zip, Country.
+- Checkbox: "Remember me" or similar.
+- Actions: Cancel (secondary) + Save (primary).
+- Spacing: Space/300–400 between rows; Space/400 between sections.
+
+---
+
+## Dashboard / data list
+
+- **Top bar:** Search input; "Add New" (primary); Sort dropdown; Filter dropdown; View toggle.
+- **Table:** Columns NAME, STATUS, DATE, TYPE, ACTIONS.
+- **Rows:** Checkbox; data; ellipsis (actions).
+- **Sidebar:** Collapsible sections (Rules, User, Settings).
+- **Background:** `--bg-base-secondary`; surface `--bg-base-default`; borders `--border-base-default`.
+
+---
+
+## Sidebar navigation
+
+- Vertical collapsible sections.
+- Hierarchy: section header; sub-items with optional counts.
+- Active: `--bg-brand-tertiary`.
+- Width: ~240–280px; Space/200–300 padding.
+
+---
+
+## Chat / Conversation interface
+
+- **Layout:** Three-pane: left sidebar (chat history); main chat area; optional right pane or inline input.
+- **Left sidebar:** Header (title + hamburger + search); Search input; Chat list (scrollable). Selected: `--bg-brand-tertiary`. User profile at bottom.
+- **Main area:** User messages (right); AI messages (left); code blocks (monospace, `--bg-base-tertiary`, Radius/100, Space/200 padding).
+- **Input:** Text area "What would you like to know?"; placeholder `--text-disabled-default`. Icons: layout/grid, code `</>`, microphone. Send: `--bg-brand-default` when active; `--border-base-default` when disabled.
+- **Spacing:** Message gaps Space/400–600; input padding Space/200–300.
+- **Sidebar width:** ~240–320px.
+
+---
+
+## Spacing rules
+
+| Context | Spacing |
+|---------|---------|
+| Section gaps | Space/600–1200 |
+| Component gaps | Space/200–400 |
+| Inline gaps | Space/100–200 |
+| Page padding | Space/400–800 |
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Do not invent patterns; implement only what exists in Figma nodes 83:32628 and 4309:529.

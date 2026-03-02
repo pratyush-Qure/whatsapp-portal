@@ -1,0 +1,104 @@
+---
+description: Modal / Dialog / Panel rules – derived from Figma
+globs: **/*{Modal,Dialog,Panel,Sheet,Drawer,Overlay,Popup}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Modal / Dialog / Panel
+
+**Figma:** [Modal / Dialog](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10421&p=f&m=dev)
+
+Structure, sizes, variants, and token mappings below are derived from Figma node 128:10421.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Surface | `--bg-base-default` |
+| Backdrop | `--bg-blanket` |
+| Header/body/footer border | `--border-base-default` |
+| Secondary button | `--bg-base-tertiary` |
+| Primary button | `--bg-brand-default` |
+| Primary button text | `--text-brand-on-brand` |
+| Close icon | `--text-base-default` |
+| Dismiss text | `--text-base-secondary` |
+| Selected nav item | `--bg-brand-tertiary` |
+
+---
+
+## Structure
+
+- **Backdrop:** `--bg-blanket` (rgba(0,0,0,0.70)); optional backdrop-blur.
+- **Surface:** `--bg-base-default`; rounded corners (Radius/200 or Radius/300).
+- **Spacing:** Space tokens for header, body, footer gaps.
+
+---
+
+## Sizes (from Figma)
+
+| Size | Max width |
+|------|-----------|
+| Small | 384px |
+| Medium | 512px |
+| Large | 672px |
+| Full | 896px |
+
+---
+
+## Variants
+
+### Basic modal (small, centered)
+- **Title:** Short; centered; max two lines.
+- **Body:** Multi-line descriptive text; centered.
+- **Actions:** Secondary (left); Primary (right). No explicit close; backdrop click or secondary.
+
+### Larger dialog
+- **Header:** Title (left); optional checkbox; Close "X" (right).
+- **Content:** Sticky banner; Date range; Body; Disclaimer at bottom.
+- **Footer:** Secondary + primary buttons.
+
+### Multi-panel modal
+- **Header:** Title (left); Close "X" (right).
+- **Left nav:** Section header (uppercase); Nav items with checkbox; Selected `--bg-brand-tertiary`.
+- **Right content:** Same as larger dialog.
+- **Footer:** Secondary + primary buttons.
+
+---
+
+## Sticky notification (inside modal)
+
+| Element | Token |
+|---------|-------|
+| Teal (info) | `--bg-brand-tertiary` |
+| Green (success) | `--bg-success-tertiary` |
+| Yellow (warning) | `--bg-warning-tertiary` |
+| Red (error) | `--bg-danger-tertiary` |
+| Dismiss | Transparent; `--text-base-secondary` |
+| Label button | `--bg-brand-default`, `--bg-success-default`, `--bg-warning-default`, or `--bg-danger-default`; `--text-brand-on-brand` |
+
+---
+
+## Footer actions
+
+| Type | Surface | Text |
+|------|---------|------|
+| Primary | `--bg-brand-default` | `--text-brand-on-brand` |
+| Secondary | `--bg-base-tertiary` | `--text-base-default` |
+| Text | Transparent | "Dismiss" style |
+
+---
+
+## Close affordance
+
+- "X" icon; `--text-base-default`; focus ring; right-aligned in header.
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Focus trap inside modal; close on Escape; return focus to trigger on close.
+- `role="dialog"` `aria-modal="true"` `aria-labelledby`.
+- Do not invent variants; implement only what exists in Figma node 128:10421.

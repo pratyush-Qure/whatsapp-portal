@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "Figma": {
+      "url": "https://mcp.figma.com/mcp",
+      "description": "Figma remote MCP — OAuth via browser"
+    },
+    "figma-desktop": {
+      "url": "http://127.0.0.1:3845/mcp",
+      "description": "Figma desktop MCP — enable in Figma Dev Mode (Shift+D) when desktop app is open"
+    },
+    "supabase-local": {
+      "url": "http://127.0.0.1:55321/mcp",
+      "description": "Local Supabase MCP — database, migrations, and container access (requires local Supabase running)"
+    }
+  }
+}

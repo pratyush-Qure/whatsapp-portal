@@ -1,0 +1,53 @@
+---
+description: Typography rules – derived from Figma
+globs: **/*{Typography,Text,Heading,Title}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Typography
+
+**Figma:** [Foundations – Typography](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=9762-187&p=f&m=dev)
+
+Font family, sizes, weights, line heights, and semantic variants below are derived from Figma foundations node 9762:187.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Font family | `--font-family` (IBM Plex Sans) |
+| Sizes | `--text-xs` through `--text-6xl` |
+| Weights | `--font-regular`, `--font-medium`, `--font-semibold`, `--font-bold` |
+| Line heights | `--leading-tight`, `--leading-snug`, `--leading-normal`, `--leading-relaxed` |
+| Text colors | `--text-base-default`, `--text-base-secondary`, `--text-disabled-default` |
+
+---
+
+## Semantic variants
+
+Prefer semantic variants over raw sizes:
+
+| Variant | Use |
+|---------|-----|
+| display | Hero, marketing headlines |
+| h1–h6 | Section headings |
+| body | Paragraphs, content |
+| caption | Supporting text, labels |
+| overline | Category labels, small caps |
+
+Map to tokens: size, line-height, weight from design-system-tokens.mdc.
+
+---
+
+## Truncation
+
+- Ellipsis when overflow.
+- Define max-width per context.
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Do not invent variants; implement only what exists in Figma node 9762:187.

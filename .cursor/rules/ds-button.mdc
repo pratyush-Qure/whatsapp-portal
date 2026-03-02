@@ -1,0 +1,90 @@
+---
+description: Button component rules – derived from Figma
+globs: **/*{Button,Btn}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Button
+
+**Figma:** [Button](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10284&p=f&m=dev)
+
+Structure, variants, states, and token mappings below are derived from Figma node 128:10284.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Primary fill | `--bg-brand-default` |
+| Primary text/icons | `--text-brand-on-brand` |
+| Outlined border/text | `--border-brand-default`, `--text-brand-default` |
+| Subtle/selected fill | `--bg-brand-tertiary` |
+| Disabled fill | `--bg-base-tertiary` |
+| Disabled text | `--text-disabled-default` |
+| Disabled border | `--border-base-default` |
+| Secondary surface | `--bg-base-default` |
+
+---
+
+## Structure
+
+- **Content:** Icon (optional, left) + Text (optional). Icon always left of text when both present.
+- **Gap:** Space/100–200 between icon and text.
+- **Shape:** Rounded corners; Radius/200 (8px) or Radius/Full (pill).
+- **Rule:** Keep borders off by default for filled buttons.
+
+---
+
+## Variants (from Figma)
+
+### Content variants (8)
+1. Filled Icon only
+2. Filled Text only
+3. Outlined Icon only
+4. Outlined Text only
+5. Filled Icon + Text (filled icon)
+6. Filled Icon + Text (outlined icon)
+7. Outlined Icon + Text (filled icon)
+8. Outlined Icon + Text (outlined icon)
+
+### Theme variants
+- **Primary Teal (Filled):** `--bg-brand-default` bg, `--text-brand-on-brand` text/icons. No border.
+- **Primary Teal (Outlined):** `--border-brand-default` border, `--text-brand-default` text/icons, transparent bg.
+- **Secondary Teal:** Same as primary; filled uses `--bg-brand-default` on hover.
+- **Subtle/Light:** Filled `--bg-brand-tertiary`; outlined `--border-brand-default` border, `--text-brand-default` text/icons.
+- **Prominent/Dark:** Darker filled; use only if defined in Figma.
+
+---
+
+## Sizes
+
+| Size | Min height | Padding | Use |
+|------|------------|---------|-----|
+| Small | 32px | Space/100–200 | Desktop only |
+| Medium | 40px | Space/200–400 | Default |
+| Large | 48px | Space/400–600 | Prominent CTAs |
+
+**Rule:** Avoid Small (32px) for touch devices; use ≥40px.
+
+---
+
+## States
+
+| State | Filled | Outlined |
+|-------|--------|----------|
+| Normal | Base colors per theme | Base colors per theme |
+| Hover | `--bg-brand-tertiary` | Darker `--border-brand-default` |
+| Focus | Focus ring `--border-brand-default` | Focus ring `--border-brand-default` |
+| Active | More pronounced than hover | More pronounced than hover |
+| Disabled | `--bg-base-tertiary` bg, `--text-disabled-default` text. No hover/active. | `--border-base-default` border, `--bg-base-default` bg, `--text-disabled-default` text. No hover/active. |
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Tailwind: `bg-[var(--bg-brand-default)]`, `text-[var(--text-brand-on-brand)]`.
+- Focus: `focus:ring-2 focus:ring-[var(--border-brand-default)] focus:ring-offset-2`.
+- Disabled: `disabled:opacity-60 disabled:cursor-not-allowed` or equivalent.
+- Do not invent variants; implement only what exists in Figma node 128:10284.

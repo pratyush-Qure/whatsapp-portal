@@ -1,0 +1,47 @@
+---
+description: Date Picker rules – derived from Figma
+globs: **/*{DatePicker,DateInput,CalendarPicker,CalendarInput}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Date Picker
+
+**Figma:** [Date Picker](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10423&p=f&m=dev)
+
+Input, popover, calendar, and selected date styling below are derived from Figma node 128:10423.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Input | Same as Text Input (ds-input.mdc) |
+| Popover surface | `--bg-base-default` |
+| Popover border | `--border-base-default` |
+| Selected date | `--bg-brand-tertiary` |
+| Today | `--border-brand-default` |
+
+---
+
+## Structure
+
+### Input
+- Same as Text Input; calendar icon.
+- See ds-input.mdc for full specs.
+
+### Popover
+- **Surface:** `--bg-base-default`.
+- **Border:** `--border-base-default`.
+- **Shadow:** shadow-lg.
+
+### Calendar
+- **Selected date:** `--bg-brand-tertiary` background.
+- **Today:** `--border-brand-default` border or outline.
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Do not invent variants; implement only what exists in Figma node 128:10423.

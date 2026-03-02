@@ -1,26 +1,79 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-base-default: #ffffff;
+  --bg-base-secondary: #f3f4f4;
+  --bg-base-tertiary: #e8e9ea;
+
+  --text-base-default: #0c1723;
+  --text-base-secondary: #39414c;
+  --text-disabled-default: #9ea3a8;
+  --text-brand-default: #008280;
+  --text-brand-on-brand: #f6f7f7;
+
+  --bg-brand-default: #008280;
+  --bg-brand-tertiary: rgba(0, 130, 128, 0.12);
+
+  --border-base-default: #dee1e2;
+  --border-base-secondary: #bbbfc2;
+  --border-brand-default: #008280;
+
+  --bg-success-default: #00c86e;
+  --bg-success-tertiary: #d4f1e4;
+  --text-success-default: #00c86e;
+
+  --bg-warning-default: #ffb400;
+  --bg-warning-tertiary: #f9ebca;
+  --text-warning-default: #ffb400;
+
+  --bg-danger-default: #ed2635;
+  --bg-danger-tertiary: #fbdee1;
+  --text-danger-default: #ed2635;
+  --border-danger-default: #93212f;
+
+  --bg-blanket: rgba(0, 0, 0, 0.7);
+  --bg-scrim: rgba(255, 255, 255, 0.8);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg-base-secondary);
+  --color-foreground: var(--text-base-default);
+  --font-sans: var(--font-ibm-plex-sans);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html[data-theme="dark"] {
+  --bg-base-default: #202a35;
+  --bg-base-secondary: #0c1723;
+  --bg-base-tertiary: #19242f;
+
+  --text-base-default: #f6f7f7;
+  --text-base-secondary: #cfd2d4;
+  --text-disabled-default: #9ea3a8;
+  --text-brand-default: #00d0cd;
+  --text-brand-on-brand: #0c1723;
+
+  --bg-brand-default: #00d0cd;
+  --bg-brand-tertiary: rgba(0, 208, 205, 0.16);
+
+  --border-base-default: #38414b;
+  --border-base-secondary: #646b72;
+  --border-brand-default: #00d0cd;
+
+  --bg-scrim: rgba(0, 0, 0, 0.8);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-base-secondary);
+  color: var(--text-base-default);
+  font-family: var(--font-ibm-plex-sans), sans-serif;
+}
+
+button:not(:disabled),
+a,
+[role="button"],
+select,
+input[type="submit"],
+input[type="button"] {
+  cursor: pointer;
 }

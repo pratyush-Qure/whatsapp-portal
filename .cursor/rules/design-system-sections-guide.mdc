@@ -1,0 +1,63 @@
+---
+description: AI guide for building UI sections – derived from Figma
+globs: **/*{Page,Section,Layout,View}*.{ts,tsx}
+alwaysApply: false
+---
+
+# UI Sections Builder Guide
+
+**Figma:** [UI Sections](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=348-13000&p=f&m=dev)
+
+Section types and component mappings below are derived from Figma node 348:13000. Load only the component rules you need.
+
+---
+
+## Section type → Component rules
+
+| Section type | Load | Key components |
+|--------------|------|-----------------|
+| **Forms** | ds-input, ds-selection, ds-button | Inputs, radio, checkbox, toggle, dropdown, date picker; Cancel + Save |
+| **Data lists / tables** | ds-lists, ds-button, ds-dropdown | Search, Add New, Sort, Filter; rows with checkbox, data, actions |
+| **Cards grid** | ds-card, ds-button | Product, pricing, testimonial cards; image + title + description + CTA |
+| **Empty state** | ds-button | Title, descriptive text, icon placeholder, primary action |
+| **Activity feed / timeline** | ds-avatar, ds-lists | Avatar, title, timestamp, description; Read/Unread status |
+| **Notifications area** | ds-notifications | With CTA, Without CTA; Type, Position; Light/Dark |
+| **Modals / drawers** | ds-modal | Title, content, Cancel + Save; Close/Back in header |
+| **Navigation sidebar** | ds-navbar | Vertical nav; active `--bg-brand-tertiary`; SECTION headers |
+| **Tabs** | ds-navbar | Horizontal tabs; active teal underline or filled |
+| **Profile / user cards** | ds-avatar, ds-card | Avatar, name, status |
+| **Breadcrumbs** | ds-typography | Label 1 / Label 2 / Label 3 |
+| **Pricing tiers** | ds-card, ds-button | Basic, Standard, Premium; feature lists; "Get Started" |
+
+---
+
+## Implementation cues
+
+| Cue | Value |
+|-----|-------|
+| **Spacing** | Section gaps Space/600–1200; component Space/200–400; inline Space/100–200 |
+| **Layout** | Grid for cards; vertical stack for lists; two-column for forms when space allows |
+| **Colors** | Primary `--bg-brand-default`; surfaces `--bg-base-default`, `--bg-base-secondary`, `--bg-base-tertiary`; borders `--border-base-default`; semantic variants |
+| **Responsiveness** | Breakpoints 375, 768, 1200 |
+| **Tokens** | Use `var(--*)`; never hardcode. See `design-system-tokens.mdc` |
+
+---
+
+## Quick reference
+
+| Use | Token |
+|-----|-------|
+| Primary action | `--bg-brand-default` button |
+| Secondary action | Outlined or text button |
+| Active/selected | `--bg-brand-tertiary` |
+| Success | `--bg-success-default` |
+| Error | `--bg-danger-default` |
+| Warning | `--bg-warning-default` |
+| Info | `--bg-brand-default` |
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Do not invent section types; implement only what exists in Figma node 348:13000.

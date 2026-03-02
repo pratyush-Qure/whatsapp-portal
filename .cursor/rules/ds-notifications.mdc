@@ -1,0 +1,91 @@
+---
+description: Notification / Message / Alert rules – derived from Figma
+globs: **/*{Notification,Alert,Message,Toast,Banner}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Notifications
+
+**Figma:** [Notifications](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10527&p=f&m=dev)
+
+Structure, variants, semantic types, and token mappings below are derived from Figma node 128:10527.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Message container | `--bg-base-default` |
+| Message icon/title | `--text-base-default` |
+| Message body | `--text-base-secondary` |
+| Message close | `--text-brand-default` |
+| Message button | `--bg-brand-default`, `--text-brand-on-brand` |
+| Alert container | `--bg-danger-tertiary` |
+| Alert icon/close | `--text-danger-default` |
+| Alert button | `--bg-danger-default`, `--text-brand-on-brand` |
+| Success | `--bg-success-tertiary`, `--text-success-default`, `--bg-success-default` |
+| Warning | `--bg-warning-tertiary`, `--text-warning-default`, `--bg-warning-default` |
+| Info | `--bg-brand-tertiary`, `--text-brand-default`, `--bg-brand-default` |
+
+---
+
+## Structure (shared)
+
+| Element | Position | Token |
+|---------|----------|-------|
+| Icon | Left of title | Info (ⓘ) or semantic |
+| Title | Bold | `--text-base-default` |
+| Body text | Below title | `--text-base-secondary` |
+| Close button | Top-right | "X" icon |
+| CTA button | Below body | Primary style |
+
+---
+
+## Variants
+
+### Message (informational)
+- **Container:** `--bg-base-default`; rounded corners.
+- **Icon:** `--text-base-default`.
+- **Title/body:** `--text-base-default`, `--text-base-secondary`.
+- **Close:** `--text-brand-default`.
+- **Button:** `--bg-brand-default` bg, `--text-brand-on-brand` text.
+- **Use:** General information, success.
+
+### Alert (warning/error)
+- **Container:** `--bg-danger-tertiary`.
+- **Icon:** `--text-danger-default`.
+- **Title/body:** `--text-base-default`, `--text-base-secondary`.
+- **Close:** `--text-danger-default`.
+- **Button:** `--bg-danger-default` bg, `--text-brand-on-brand` text.
+- **Use:** Warnings, errors, critical information.
+
+### Semantic variants
+| Type | Container | Icon | Button |
+|------|-----------|------|--------|
+| Success | `--bg-success-tertiary` | `--text-success-default` | `--bg-success-default`, `--text-brand-on-brand` |
+| Warning | `--bg-warning-tertiary` | `--text-warning-default` | `--bg-warning-default` |
+| Info | `--bg-brand-tertiary` | `--text-brand-default` | `--bg-brand-default`, `--text-brand-on-brand` |
+
+---
+
+## Spacing
+
+- Space/200–300 between icon and title.
+- Space/400 between sections.
+- Padding: Space/200–400.
+
+---
+
+## Toast (temporary)
+
+- Position: fixed top-4 right-4; z-50.
+- Auto-dismiss: 3–5 seconds.
+- Stack vertically with 8px gap.
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Do not invent variants; implement only what exists in Figma node 128:10527.

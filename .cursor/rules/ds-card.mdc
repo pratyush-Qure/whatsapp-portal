@@ -1,0 +1,93 @@
+---
+description: Card component rules – derived from Figma
+globs: **/*{Card}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Card
+
+**Figma:** [Card](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=2143-13485&p=f&m=dev)
+
+Structure, variants, content blocks, and token mappings below are derived from Figma node 2143:13485.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Default surface | `--bg-base-default` |
+| Featured/primary surface | `--bg-brand-default` |
+| Selected surface | `--bg-brand-tertiary` |
+| Selected border | `--border-brand-default` |
+| Image placeholder | `--bg-base-tertiary` |
+| Title | `--text-base-default` |
+| Body text | `--text-base-secondary` |
+| Primary button | `--bg-brand-default` |
+| Secondary button | `--border-base-default`, `--text-base-default` |
+| Text on brand | `--text-brand-on-brand` |
+
+---
+
+## Structure
+
+- **Rule:** Fixed width in component set; auto layout and width defined by parent.
+- **Padding:** Space/200–400.
+- **Layout:** Vertical stack; optional image/icon → title → body → button.
+
+---
+
+## Structural variants (from Figma)
+
+| Variant | Structure |
+|---------|-----------|
+| SIZE | [Icon?] → Title → Body text → Button |
+| IMAGE | Image placeholder (top) → Title → Body text → Button |
+| ICON | Leading icon → Title → Body text → Button |
+| DEFAULT | Image placeholder → Title → Body text → Button |
+
+---
+
+## Content blocks
+
+| Block | Token | Notes |
+|-------|-------|-------|
+| Title | `--text-base-default` | Bold; single or multi-line |
+| Body text | `--text-base-secondary` | Multi-line |
+| Button | Primary `--bg-brand-default` or secondary `--border-base-default` | Per variant |
+| Image placeholder | `--bg-base-tertiary` | Aspect ratio per placement |
+
+---
+
+## Styled variants
+
+| Variant | Surface | Text | Button |
+|---------|---------|------|--------|
+| Light card | `--bg-base-default` | `--text-base-default` | `--bg-brand-default` |
+| Teal card | `--bg-brand-default` | `--text-brand-on-brand` | Secondary (grey) |
+| Pricing card | `--bg-base-default` | `--text-base-default` | Prominent price; CTA at bottom |
+
+---
+
+## Specialized cards (from Figma)
+
+- **Review card:** Star rating; Review title; Review body; Avatar + Reviewed name + Date.
+- **Timer/Activity card:** Clock icon; time (e.g. 1:00); Body text.
+- **Quote card:** Quote icon; quote text; Avatar + Name + Description.
+
+---
+
+## States
+
+| State | Surface | Border |
+|-------|---------|--------|
+| Default | `--bg-base-default` or `--bg-brand-default` | `--border-base-default` |
+| Selected | `--bg-brand-tertiary` | `--border-brand-default` |
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Spacing: Space/200–400 internal; Space/400–600 between cards in grid.
+- Do not invent variants; implement only what exists in Figma node 2143:13485.

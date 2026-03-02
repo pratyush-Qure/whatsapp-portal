@@ -1,0 +1,89 @@
+---
+description: NavBar / Navigation / Tabs rules – derived from Figma
+globs: **/*{NavBar,Navbar,Navigation,Topbar,Sidebar,Tabs,Tab,NavItem,Header,Menubar}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Navigation
+
+**Figma:** [Navigation](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=516-12822&p=f&m=dev)
+
+Structure, tabs, nav list, and token mappings below are derived from Figma node 516:12822.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Top bar bg (default) | `--bg-base-default` |
+| Top bar bg (dark) | `--bg-base-secondary` |
+| Logo/accents | `--text-brand-default` |
+| Text/icons | `--text-base-default` |
+| Tab default | `--bg-base-default`, `--border-base-default` |
+| Tab active | `--border-brand-default` underline |
+| Tab hover | `--bg-base-tertiary` |
+| Tab selected | `--bg-brand-default`, `--text-brand-on-brand` |
+| Nav item default | `--bg-base-default`, `--text-base-default` |
+| Nav item selected | `--bg-brand-tertiary`, `--text-brand-on-brand` |
+| Chevron default | `--text-base-secondary` |
+
+---
+
+## Structure
+
+### Top bar (NavBar)
+- **Height:** ~64px; Space/800 padding.
+- **Layout:** Logo left; nav items center/right; search + CTA right.
+- **Background:** `--bg-base-default` or `--bg-base-secondary` (dark variant).
+
+### Tab / Title elements
+- **Context:** On Base/Default (white) or Base/Secondary (grey) background.
+
+### Navigation list items
+- **Structure:** Checkbox (left) + "Navigation Title" + Chevron (right).
+- **SECTION headers:** Uppercase; group items hierarchically.
+
+---
+
+## Tab states
+
+| State | On Base/Default | On Base/Secondary |
+|-------|----------------|-------------------|
+| Default | `--bg-base-default` bg, `--border-base-default` border; `--text-base-default` | Same; adapted for `--bg-base-secondary` |
+| Active | `--border-brand-default` underline; `--text-base-default` | Same |
+| Hover | `--bg-base-tertiary` fill + `--border-brand-default` underline | Same |
+| Selected | `--bg-brand-default` bg, `--text-brand-on-brand` | Same |
+
+---
+
+## Nav list states
+
+| State | Background | Text | Checkbox | Chevron |
+|-------|------------|------|----------|---------|
+| Default | `--bg-base-default` | `--text-base-default` | Empty | `--text-base-secondary` |
+| Selected | `--bg-brand-tertiary` | `--text-brand-on-brand` | Filled | Matching |
+| Focused | Same | Bold | Empty or filled | `--border-brand-default` outline |
+
+---
+
+## Spacing
+
+- Space/200–300 between items.
+- Space/400 before SECTION header.
+- Space/400–600 between nav items in top bar.
+
+---
+
+## Icons
+
+- **Checkbox:** Square; empty (default) or filled (selected).
+- **Chevron:** Right-pointing; `--text-base-secondary` (default) or `--text-brand-on-brand` (selected).
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Mobile: Hamburger menu; drawer/overlay.
+- Do not invent variants; implement only what exists in Figma node 516:12822.

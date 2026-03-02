@@ -1,0 +1,49 @@
+---
+description: FilterChip / ToggleChip rules – derived from Figma
+globs: **/*{FilterChip,ToggleChip}*.{ts,tsx}
+alwaysApply: false
+---
+
+# FilterChip / ToggleChip
+
+**Figma:** [FilterChip / ToggleChip](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10523&p=f&m=dev)
+
+Default, selected states, and positions below are derived from Figma node 128:10523.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Default border | `--border-brand-default` |
+| Selected bg | `--bg-brand-tertiary` |
+| Selected border | `--border-brand-default` |
+| Text | `--text-base-default` |
+
+---
+
+## States
+
+| State | Border | Background |
+|-------|--------|------------|
+| Default | `--border-brand-default` | Transparent (outlined) |
+| Selected | `--border-brand-default` | `--bg-brand-tertiary` |
+
+---
+
+## Positions (segmented groups)
+
+| Position | Notes |
+|----------|-------|
+| Standalone | Single chip |
+| Left | First in group |
+| Middle | Between chips |
+| Right | Last in group |
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Do not invent variants; implement only what exists in Figma node 128:10523.

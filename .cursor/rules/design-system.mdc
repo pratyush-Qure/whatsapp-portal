@@ -1,0 +1,76 @@
+---
+description: Qure Design System - primary source of truth
+globs: **/*.{ts,tsx,js,jsx,css,scss,less}
+alwaysApply: false
+---
+
+# Qure Design System
+
+Use this design system when building or refactoring UI. All tokens and variants are derived from Figma. Do not invent values.
+
+**Entrypoint for routing:** `design-system-context-routing.mdc` (always apply).
+
+All component rules (`ds-*.mdc`) have been rebuilt from Figma with Variables, Structure, Variants, States, and Implementation guidelines. Each rule references its Figma node.
+
+## Figma sources
+- Foundations/tokens: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=9762-187&p=f&m=dev
+- Component library: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=7641-2142&p=f&m=dev
+- Button: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10284&p=f&m=dev
+- Composition guide: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=83-32628&p=f&m=dev
+- Light/Dark mode theming: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=522-12151&p=f&m=dev
+- Card: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=2143-13485&p=f&m=dev
+- Modal/Dialog: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10421&p=f&m=dev
+- Input: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10423&p=f&m=dev
+- Navigation: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=516-12822&p=f&m=dev
+- Notifications: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10527&p=f&m=dev
+- Tags: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10523&p=f&m=dev
+- Tooltip: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=280-23459&p=f&m=dev
+- Accordion: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10528&p=f&m=dev
+- Avatar: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10526&p=f&m=dev
+- Chat interface: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=4309-529&p=f&m=dev
+- UI sections guide: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=348-13000&p=f&m=dev
+- Icon set: https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=7809-18809&p=f&m=dev
+
+## Process
+1. Start from `design-system-context-routing.mdc` (always-on router) to select only required rules.
+2. Use tokens from `design-system-tokens.mdc` when exact values/aliases are required.
+3. Theme via `data-theme` on `<html>`: `light` (default) or `dark`.
+4. Load only the relevant component/layout rule files below for the current task.
+5. If a token is missing, request it—do not invent.
+
+## Token usage
+- **CSS**: Define variables in `globals.css` or theme file; consume via `var(--token-name)`.
+- **Tailwind**: Use arbitrary values, e.g. `bg-[var(--bg-base-default)]`, `text-[var(--text-base-default)]`.
+- **Inline**: Prefer `style={{ color: 'var(--text-brand-default)' }}` over hex literals.
+- **Only** use tokens defined in `design-system-tokens.mdc`; all tokens are derived from Figma.
+
+## Rule map (load only what you need)
+- Tokens: `design-system-tokens.mdc`
+- Theming (dark/light): `design-system-theming.mdc`
+- Composition: `design-system-composition.mdc`
+- Sections builder: `design-system-sections-guide.mdc`
+- Button: `ds-button.mdc`
+- Card: `ds-card.mdc`
+- Modal/Dialog/Panel: `ds-modal.mdc`
+- Accordion: `ds-accordion.mdc`
+- Avatar: `ds-avatar.mdc`
+- Input/TextArea/SearchBar: `ds-input.mdc`
+- Radio/Checkbox/Toggle: `ds-selection.mdc`
+- DatePicker: `ds-datepicker.mdc`
+- FilterChip: `ds-filterchip.mdc`
+- Dropdown/Select: `ds-dropdown.mdc`
+- NavBar: `ds-navbar.mdc`
+- Badges: `ds-badges.mdc`
+- Lists: `ds-lists.mdc`
+- Typography: `ds-typography.mdc`
+- Notifications: `ds-notifications.mdc`
+- Tags: `ds-tags.mdc`
+- Tooltip: `ds-tooltip.mdc`
+- Icons: `ds-icons.mdc`
+
+## Design System Setup
+
+- **globals.css:** Define CSS variables for light/dark per `[data-theme]`; use only Figma variable values from design-system-tokens.
+- **Tailwind config:** Extend theme with token references; no hardcoded values.
+- **ThemeProvider:** Set `data-theme` on `<html>`; persist to localStorage; optionally respect `prefers-color-scheme`.
+- **New project checklist:** Copy `.cursor/rules/`, create globals.css with token definitions from design-system-tokens.mdc, add Tailwind config extending tokens, add ThemeProvider.

@@ -1,0 +1,97 @@
+---
+description: Text Input / TextArea / SearchBar rules – derived from Figma
+globs: **/*{Input,TextField,TextArea,SearchBar,FormField,FieldControl}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Input Fields
+
+**Figma:** [Input / TextField](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10423&p=f&m=dev)
+
+Structure, states, variants, and token mappings below are derived from Figma node 128:10423.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Surface | `--bg-base-default` |
+| Border default | `--border-base-default` |
+| Border focus | `--border-brand-default` |
+| Border error | `--border-danger-default` |
+| Label | `--text-base-secondary` |
+| Value text | `--text-base-default` |
+| Placeholder | `--text-disabled-default` |
+| Helper default | `--text-base-secondary` |
+| Helper error | `--text-danger-default` |
+| Leading/trailing icons | `--text-base-secondary` |
+| Disabled bg | `--bg-base-tertiary` |
+| Disabled text | `--text-disabled-default` |
+
+---
+
+## Structure
+
+- **Label:** Above input; `--text-base-secondary`; Space/100 gap.
+- **Input:** Border radius Radius/100 (4px).
+- **Helper text:** Below input; Space/100 gap.
+- **Layout:** Vertical stack; label → input → helper.
+
+---
+
+## States
+
+| State | Border | Background | Text |
+|-------|-------|------------|------|
+| Default | `--border-base-default` | `--bg-base-default` | `--text-base-default` |
+| Filled | Same | Same | Same |
+| Focused | `--border-brand-default` 2px | Same | Same |
+| Error | `--border-danger-default` | Same | Helper: `--text-danger-default` |
+| Disabled | Lighter/dashed | `--bg-base-tertiary` | `--text-disabled-default` |
+| Read-only | Same as default | Same | Non-interactive; distinct from disabled |
+
+---
+
+## Sizes
+
+| Size | Height | Padding |
+|------|--------|---------|
+| Small | ~32px | Space/200 |
+| Medium | ~40px | Space/200–300 |
+| Large | ~48px | Space/300–400 |
+
+---
+
+## Types and variants (from Figma)
+
+- **Text:** Single-line; optional leading (search) or trailing (eye, clear X) icon.
+- **Password:** Masked; trailing eye icon to toggle visibility.
+- **SearchBar:** Leading search icon; compact; optional clear.
+- **TextArea:** Multi-line; min height ~80px; vertically expandable.
+- **Number:** Spinner (up/down); optional min/max/step.
+- **Date picker:** Calendar icon; placeholder "dd-mm-yyyy".
+- **Dropdown:** Chevron right; selected value or placeholder.
+- **Multi-select:** Tag-like selected items with close icons.
+- **With units:** Predefined units (% or currency) adjacent.
+- **Character counter:** "0/100" below; `--text-base-secondary`.
+
+---
+
+## Props (from Figma)
+
+- **Type:** Text, Number, Password, Email, Search, Tel, URL, Date, Time, DateTime-local, Month, Week, Color.
+- **Icon:** Left, Right, None.
+- **Clearable:** Yes/No.
+- **Optional:** Yes/No (label indicator).
+- **Read-only:** Yes/No.
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Focus: `focus:border-[var(--border-brand-default)] focus:ring-1 focus:ring-[var(--border-brand-default)]`.
+- Error: `border-[var(--border-danger-default)]`; helper `text-[var(--text-danger-default)]`.
+- Leading/trailing icons: padding Space/200–300.
+- Do not invent variants; implement only what exists in Figma node 128:10423.

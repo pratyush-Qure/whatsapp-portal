@@ -1,0 +1,82 @@
+---
+description: Accordion component rules – derived from Figma
+globs: **/*{Accordion,Collapse,Collapsible,Expandable}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Accordion
+
+**Figma:** [Accordion](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10528&p=f&m=dev)
+
+Header variants, content structure, layout variants, and states below are derived from Figma node 128:10528.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Header/content bg | `--bg-base-tertiary` or `--bg-base-secondary` |
+| Border | `--border-base-default` |
+| Body text | `--text-base-secondary` |
+| Chevron | `--text-brand-default` |
+| Chevron emphasis | `--bg-brand-tertiary` circle |
+| Status error | `--bg-danger-default` |
+| Status success | `--bg-success-default` |
+| Status warning | `--bg-warning-default` |
+
+---
+
+## Structure
+
+### Header
+- **Layout:** Checkbox (left); Title (bold); optional Status text + status dot; optional Label; Chevron (right).
+- **Variants:** Full (checkbox, title, status, label, chevron); Simplified (checkbox, title, chevron only).
+
+### Content
+- Revealed below header when expanded.
+- Body: `--text-base-secondary`.
+- Padding: Space/200–400.
+
+---
+
+## States
+
+| State | Chevron | Content |
+|-------|---------|---------|
+| Collapsed | Down | Hidden |
+| Expanded | Up | Visible |
+
+---
+
+## Layout variants
+
+| Variant | Items | Separator |
+|---------|-------|-----------|
+| Stacked | Touch | `border-bottom` `--border-base-default` 1px |
+| Spaced | Space/200–300 between | Subtle shadow or border |
+
+---
+
+## Styling
+
+| Property | Value |
+|----------|-------|
+| Radius | Radius/100 (4px) or Radius/200 (8px) |
+| Chevron emphasis | Within `--bg-brand-tertiary` circle |
+
+### Status dot
+| Type | Token |
+|------|-------|
+| Error/urgent | `--bg-danger-default` |
+| Success | `--bg-success-default` |
+| Attention | `--bg-warning-default` |
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- A11y: `aria-expanded`, `aria-controls`; keyboard (Enter/Space to toggle); focus on header.
+- Smooth height animation: `transition-all duration-200 ease-in-out`.
+- Do not invent variants; implement only what exists in Figma node 128:10528.

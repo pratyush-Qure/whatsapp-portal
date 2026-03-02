@@ -1,0 +1,187 @@
+---
+description: Qure dark/light mode – when to use what color, AI guidelines for theming
+globs: **/*{theme,Theme,dark,light,color-scheme,appearance,globals}*.{ts,tsx,js,jsx,css,scss,less}
+alwaysApply: false
+---
+
+# Design System – Dark & Light Mode Theming
+
+**Figma reference:** [Light/Dark Mode Setup](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=522-12151&p=f&m=dev)
+
+Decision rules below are derived from Figma node 522:12151. Use **only** tokens from `design-system-tokens.mdc`; never hardcode hex values in components.
+
+---
+
+## When to switch
+
+- **Light mode:** Default. Use when `data-theme="light"` or no attribute on `<html>`.
+- **Dark mode:** Use when `data-theme="dark"` on `<html>`.
+
+Layout and component structure stay identical; only token values change.
+
+---
+
+## Decision Rules – When to Use What Color
+
+### 1. Backgrounds (surfaces)
+
+| Use case | Light | Dark | Token |
+|----------|-------|------|-------|
+| Main page / app background | `#ffffff` | `#0c1723` | Bg/Default/Default (light) / Secondary (dark) |
+| Secondary / negative space | `#f3f4f4` | `#0c1723` | Bg/Default/Secondary |
+| Cards, panels, modals | `#ffffff` | `#202a35` | Bg/Default/Default |
+| Tertiary surfaces (dividers, sections) | `#e8e9ea` | `#19242f` | Bg/Default/Tertiary |
+| Input / select fields | `#ffffff` | Darker than page background | Bg/Default/Default (inputs) |
+| Disabled surfaces | `#dee1e2` | `#38414b` | Bg/Disabled/Default |
+
+**AI rule:** Use `--bg-base-default` for primary surfaces (cards, modals, panels). Use `--bg-base-secondary` for page background. Use `--bg-base-tertiary` for tertiary surfaces.
+
+---
+
+### 2. Text
+
+| Use case | Light | Dark | Token |
+|----------|-------|------|-------|
+| Primary text (headings, body) | `#0c1723` | `#f6f7f7` | Text/Base/Default |
+| Secondary text (labels, captions) | `#39414c` | `#cfd2d4` | Text/Base/Secondary |
+| Tertiary / muted | `#565d66` | `#a8acb0` | Text/Base/Tertiary |
+| Placeholder | `#bbbfc2` | Lighter gray | Text/Disabled/Placeholder |
+| Disabled | `#9ea3a8` | `#9ea3a8` | Text/Disabled/Default |
+| On brand CTA (buttons) | `#f6f7f7` | `#0c1723` | Text/Brand/On Brand |
+
+**AI rule:** Always use `--text-base-default` / `--text-base-secondary` / `--text-disabled-default`; never hardcode.
+
+---
+
+### 3. Brand / Primary CTA
+
+| Use case | Light | Dark | Token |
+|----------|-------|------|-------|
+| Primary button | `#008280` | `#00d0cd` | Bg/Brand/Default |
+| Primary button hover | `#027575` | `#3edad8` | Bg/Brand/Hover |
+| Text on brand | `#f6f7f7` | `#0c1723` | Text/Brand/On Brand |
+| Brand secondary (tint) | `rgba(0,130,128,0.12)` | `rgba(0,208,205,0.16)` | Bg/Brand/Tertiary |
+| Selected / active state | `rgba(0,130,128,0.40)` | `rgba(0,208,205,0.56)` | Bg/Brand/Secondary |
+
+**AI rule:** Primary brand stays teal. Light mode: darker teal; dark mode: brighter teal for contrast. Use `--bg-brand-default` / `--text-brand-default` / `--border-brand-default` via CSS variables.
+
+---
+
+### 4. Secondary / Ghost buttons
+
+| Use case | Light | Dark | Token |
+|----------|-------|------|-------|
+| Background | `#ffffff` | Darker than page | Bg/Default/Default |
+| Border | `#dee1e2` | `#38414b` | Border/Base/Default |
+| Text | `#0c1723` | `#f6f7f7` | Text/Base/Default |
+| Hover | `rgba(0,130,128,0.08)` | `rgba(0,208,205,0.16)` | Bg/Default/Default Hover |
+
+**AI rule:** Secondary buttons: `--bg-base-default` surface with `--border-base-default` + `--text-base-default`; no brand fill.
+
+---
+
+### 5. Borders
+
+| Use case | Light | Dark | Token |
+|----------|-------|------|-------|
+| Default borders | `#dee1e2` | `#38414b` | Border/Base/Default |
+| Secondary / dividers | `#bbbfc2` | `#646b72` | Border/Base/Secondary |
+| Tertiary / subtle | `#81878d` | — | Border/Base/Tertiary |
+| Brand focus | `#008280` | `#00d0cd` | Border/Brand/Default |
+
+**AI rule:** Use `--border-base-default` or equivalent for borders; never hardcode.
+
+---
+
+### 6. Alerts / Notifications
+
+| Semantic | Container | Icon/Text | Button |
+|----------|-----------|-----------|--------|
+| Danger / error | `--bg-danger-tertiary` | `--text-danger-default` | `--bg-danger-default` bg, `--text-brand-on-brand` text |
+| Warning | `--bg-warning-tertiary` | `--text-warning-default` | `--bg-warning-default` bg, `--text-base-default` text |
+| Success | `--bg-success-tertiary` | `--text-success-default` | `--bg-success-default` bg, `--text-brand-on-brand` text |
+| Info | `--bg-brand-tertiary` | `--text-brand-default` | `--bg-brand-default` bg, `--text-brand-on-brand` text |
+
+**AI rule:** Use semantic tokens above. Text on filled buttons: `--text-brand-on-brand` for dark fills (danger, success, brand).
+
+---
+
+### 7. Tags / Chips
+
+| Use case | Light | Dark | Token |
+|----------|-------|------|-------|
+| Background | `#ffffff` or `#f3f4f4` | `#19242f` | Bg/Default/Tertiary |
+| Border | `#dee1e2` | `#38414b` | Border/Base/Default |
+| Text | `#0c1723` | `#f6f7f7` | Text/Base/Default |
+| Remove icon | `--text-danger-default` for destructive; `--text-brand-default` for non-destructive |
+
+**AI rule:** Tags use `--bg-base-tertiary`; semantic variants use `--bg-success-tertiary`, `--bg-warning-tertiary`, `--bg-danger-tertiary` with matching text tokens.
+
+---
+
+### 8. Inputs
+
+| Use case | Light | Dark | Token |
+|----------|-------|------|-------|
+| Background | `#ffffff` | Slightly lighter than page | Bg/Default/Default |
+| Border | `#dee1e2` | `#38414b` | Border/Base/Default |
+| Text | `#0c1723` | `#f6f7f7` | Text/Base/Default |
+| Placeholder | `#bbbfc2` | `#a8acb0` | Text/Disabled/Placeholder |
+| Focus border | `#008280` | `#00d0cd` | Border/Brand/Default |
+
+**AI rule:** Inputs use `--bg-base-default`; borders use `--border-base-default`; focus uses `--border-brand-default`.
+
+---
+
+### 9. Icons
+
+| Use case | Light | Dark | Token |
+|----------|-------|------|-------|
+| Default | `#0c1723` | `#f6f7f7` | Icon/Base/Default |
+| Secondary | `#39414c` | `#cfd2d4` | Icon/Base/Secondary |
+| Tertiary | `#565d66` | `#a8acb0` | Icon/Base/Tertiary |
+| On brand | `#f6f7f7` | `#0c1723` | Icon/Brand/On Brand |
+
+**AI rule:** Match icon color to text hierarchy; use `--text-base-default`, `--text-base-secondary`, `--text-brand-default`, `--text-brand-on-brand`.
+
+---
+
+### 10. Modals / Overlays
+
+| Use case | Light | Dark | Token |
+|----------|-------|------|-------|
+| Modal background | `#ffffff` | `#202a35` | Bg/Default/Default |
+| Backdrop | `rgba(0,0,0,0.70)` | `--bg-blanket` |
+| Scrim | Light: `rgba(255,255,255,0.80)`; Dark: `rgba(0,0,0,0.80)` | `--bg-scrim` |
+
+**AI rule:** Modal content uses `--bg-base-default`; backdrop always same dark overlay.
+
+---
+
+## AI Guidelines – Summary
+
+1. **Never hardcode colors.** Use `var(--token-name)` or Tailwind arbitrary values.
+2. **Theme via `data-theme`** on `<html>`. Tokens switch automatically.
+3. **Primary brand:** Teal in both modes; darker in light, brighter in dark.
+4. **Structure:** Layout and hierarchy identical; only colors change.
+5. **Semantic colors:** Use `--bg-danger-default`, `--bg-warning-default`, `--bg-success-default` and their tertiary/text variants per design-system-tokens.mdc.
+6. **Color primitives:** Gray and Teal scales map to semantic tokens. Use semantic tokens only; see `design-system-tokens.mdc`.
+7. **Hover states:** Use Bg/Default/Default Hover or Bg/Brand/Hover per context.
+8. **Missing token:** Request it; do not invent.
+
+---
+
+## Quick Reference – CSS Variable Mapping
+
+| Semantic | CSS var |
+|----------|---------|
+| Primary surface | `--bg-base-default` |
+| Page background | `--bg-base-secondary` |
+| Tertiary surface | `--bg-base-tertiary` |
+| Border | `--border-base-default` |
+| Primary CTA (fill) | `--bg-brand-default` |
+| Primary CTA (text) | `--text-brand-on-brand` |
+| Brand tertiary (selected/hover) | `--bg-brand-tertiary` |
+| Primary text | `--text-base-default` |
+| Secondary text | `--text-base-secondary` |
+| Disabled text | `--text-disabled-default` |

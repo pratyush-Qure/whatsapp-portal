@@ -1,0 +1,32 @@
+# Additional local infrastructure for WhatsApp Messaging Portal
+#
+# Supabase (DB, Auth, Realtime) is started separately via: npx supabase start
+# This compose runs optional services: Redis (for queue/cache or future BullMQ).
+#
+# Usage:
+#   docker compose up -d              # start Redis (and any other services below)
+#   docker compose down               # stop all
+#
+# Full local stack:
+#   1. npx supabase start             # or: npm run db:start
+#   2. docker compose up -d           # Redis etc.
+#   3. npm run dev
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: whatsapp-portal-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  redis_data:

@@ -1,0 +1,80 @@
+---
+description: Qure context router - load only required rules per prompt and task
+globs: **/*.{ts,tsx,js,jsx,css,scss,less}
+alwaysApply: true
+---
+
+# Qure Context Routing (Always On)
+
+This is the routing layer. Keep context minimal and load only files needed for the current task. **Only use tokens and values defined in Figma-linked rule files.** Do not invent or assume values.
+
+All component rules have been rebuilt from Figma. Token aliases below align with `design-system-tokens.mdc`.
+
+## Global baseline (always active)
+- Use design tokens only. Do not hardcode colors, spacing, typography, radii, shadows.
+- Theme with `data-theme` on `<html>` (`light` default, `dark` optional).
+- Global token aliases (use only these; see design-system-tokens.mdc):
+  - Surface: `--bg-base-default`, `--bg-base-secondary`, `--bg-base-tertiary`
+  - Text: `--text-base-default`, `--text-base-secondary`, `--text-disabled-default`
+  - Brand: `--bg-brand-default`, `--bg-brand-tertiary`, `--text-brand-default`, `--text-brand-on-brand`
+  - Border: `--border-base-default`, `--border-base-secondary`, `--border-brand-default`
+  - Semantic: `--bg-success-default`, `--bg-warning-default`, `--bg-danger-default`; `--text-success-default`, `--text-warning-default`, `--text-danger-default`; `--border-danger-default`
+  - Utilities: `--bg-blanket`, `--bg-scrim`
+- If exact token values are needed, load `design-system-tokens.mdc`.
+- If dark/light behavior is needed, load `design-system-theming.mdc`.
+
+## Context loading protocol
+1. Identify task scope from prompt and edited files.
+2. Load only matching component/layout rules from table below.
+3. Keep active rules minimal:
+   - Component task: baseline + 1 component rule (+ `ds-icons.mdc` only if icon-specific)
+   - Page/layout task: baseline + `design-system-composition.mdc` + up to 2 component rules
+   - Theming task: baseline + `design-system-theming.mdc` (+ `design-system-tokens.mdc` if values needed)
+4. Do not load unrelated component rules.
+
+## Fallback for differently named files (existing repos)
+- Do not rely on filename match alone.
+- If prompt intent is clear (for example: "build an upgrade dialog"), load rule by intent even if file name is non-standard.
+- Use path semantics as secondary hints:
+  - `**/components/**`, `**/ui/**`, `**/features/**`, `**/views/**`, `**/screens/**`
+- If both filename and prompt are ambiguous, infer from JSX structure:
+  - Overlay/backdrop + focus trap + close action -> `ds-modal.mdc`
+  - Field label + helper/error text + input control -> `ds-input.mdc`
+  - Trigger + menu/options list -> `ds-dropdown.mdc`
+  - Expand/collapse chevron + hidden content -> `ds-accordion.mdc`
+  - Dismissible banner/toast/inline alert -> `ds-notifications.mdc`
+
+## Router-first behavior
+- This file is the entrypoint for context routing.
+- Always pick rules by task intent first, then validate with filename/path hints.
+- If one rule is insufficient, add at most one adjacent rule (for example `ds-modal.mdc` + `ds-button.mdc`).
+
+## Prompt-to-rule map
+- Button/CTA/action -> `ds-button.mdc`
+- Modal/dialog/panel/sheet -> `ds-modal.mdc`
+- Input/form field/search/password/textarea -> `ds-input.mdc`
+- Dropdown/select/menu list -> `ds-dropdown.mdc`
+- Date/date picker/calendar -> `ds-datepicker.mdc`
+- Checkbox/radio/toggle/switch -> `ds-selection.mdc`
+- Card/pricing/review/timer/quote -> `ds-card.mdc`
+- Accordion/FAQ/collapse -> `ds-accordion.mdc`
+- Avatar/profile group -> `ds-avatar.mdc`
+- Navbar/topbar/sidebar/tabs/navigation list -> `ds-navbar.mdc`
+- Notification/alert/banner/toast/message -> `ds-notifications.mdc`
+- Tag/chip/label/pill -> `ds-tags.mdc`
+- Filter chip / toggle chip -> `ds-filterchip.mdc`
+- Badge/status indicator -> `ds-badges.mdc`
+- Tooltip/hint/popover tip -> `ds-tooltip.mdc`
+- Icon selection/sizing/color/accessibility -> `ds-icons.mdc`
+- Typography scale/headings/text styles -> `ds-typography.mdc`
+- List/data list/feed rows -> `ds-lists.mdc`
+- Section assembly/page scaffolding/dashboard/chat layout -> `design-system-sections-guide.mdc` + `design-system-composition.mdc`
+- Theme/color-mode/dark mode/light mode -> `design-system-theming.mdc`
+- Token definitions/aliases/raw values -> `design-system-tokens.mdc`
+
+## Conflict resolution priority
+1. Component-specific rules (`ds-*.mdc`)
+2. Theming rules (`design-system-theming.mdc`)
+3. Token source of truth (`design-system-tokens.mdc`)
+4. Composition/sections guides
+

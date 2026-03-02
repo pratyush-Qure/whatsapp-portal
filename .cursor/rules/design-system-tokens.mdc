@@ -1,0 +1,230 @@
+---
+description: Qure design tokens - colors, typography, spacing, radii. Source of truth: Figma.
+globs: **/*{global,theme,token,color,palette,variables}*.{css,scss,less,ts,tsx,js,jsx}
+alwaysApply: false
+---
+
+# Design System Tokens
+
+**Figma source of truth:** [Foundations & Tokens](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=9762-187&p=f&m=dev)
+
+Variables and tokens below are derived from Figma node 9762:187 (Foundations). Use **only** these tokens in components. Do not invent values.
+
+## Theming
+- Light: `data-theme="light"` or no attribute on `<html>`
+- Dark: `data-theme="dark"` on `<html>`
+- Tokens switch by theme; never hardcode light/dark values in components.
+
+---
+
+## Color Primitives (Figma)
+
+### Gray scale (100–900)
+Theme-inverted: light mode uses 100=lightest, 900=darkest; dark mode inverts.
+
+| Token | Light | Dark |
+|-------|-------|------|
+| Gray 100 | #F6F7F7 | #0C1723 |
+| Gray 200 | #D9DBDD | #29333E |
+| Gray 300 | #BBBFC2 | #474F58 |
+| Gray 400 | #9EA3A8 | #646B72 |
+| Gray 500 | #81878D | #81878D |
+| Gray 600 | #646B72 | #9EA3A8 |
+| Gray 700 | #474F58 | #BBBFC2 |
+| Gray 800 | #29333E | #D9DBDD |
+| Gray 900 | #0C1723 | #F6F7F7 |
+
+### Teal scale
+| Token | Light | Dark |
+|-------|-------|------|
+| Teal 300 | — | Lighter teal |
+| Teal 400 | Lighter teal | — |
+| Teal 500 | #008280 | #00d0cd |
+| Teal 600 | #027575 | — |
+| Teal 800 | Tertiary fill | Tertiary fill |
+| Teal 900 | Tertiary fill | Tertiary fill |
+| Deep Teal | #008280 | #00d0cd |
+
+*Values above are from Figma SDS (Foundations node 9762-187).*
+
+---
+
+## Semantic Token Mappings (Figma)
+
+Use these semantic tokens in components. Map to CSS variables in theme/globals.
+
+### Fill or Background
+| Semantic Token | Primitives (Light / Dark) | CSS var |
+|----------------|---------------------------|---------|
+| Background/Base/Default | Gray 100, Gray 800 | `--bg-base-default` |
+| Background/Base/Secondary | Gray 200, Gray 900 | `--bg-base-secondary` |
+| Background/Base/Tertiary | Gray 300, Gray 700 | `--bg-base-tertiary` |
+| Background/Brand/Default | Teal 400, Teal 500, Teal 600, Deep Teal | `--bg-brand-default` |
+| Background/Brand/Tertiary | Teal 800, Teal 900 | `--bg-brand-tertiary` |
+
+### Text or Icon / shape / svg
+| Semantic Token | Primitives (Light / Dark) | CSS var |
+|----------------|---------------------------|---------|
+| Text/Base/Default | Gray 100, Gray 200, Gray 800, Gray 900 | `--text-base-default` |
+| Text/Base/Secondary | Gray 300, Gray 700 | `--text-base-secondary` |
+| Text/Disabled/Default | Gray 400, Gray 500, Gray 600 | `--text-disabled-default` |
+| Text/Brand/Default | Teal 300, Teal 400, Teal 500, Teal 600, Deep Teal | `--text-brand-default` |
+| Text/Brand/On Brand | Gray 100 (light), Gray 900 (dark) | `--text-brand-on-brand` |
+
+### Border
+| Semantic Token | Primitives (Light / Dark) | CSS var |
+|----------------|---------------------------|---------|
+| Border/Base/Default | Gray 200, Gray 800 | `--border-base-default` |
+| Border/Base/Secondary | Gray 300, Gray 700 | `--border-base-secondary` |
+| Border/Base/Tertiary | Gray 400, Gray 600 | `--border-base-tertiary` |
+| Border/Brand/Default | Teal 300, Teal 400, Teal 500, Teal 600, Deep Teal | `--border-brand-default` |
+
+### Semantic (Success, Warning, Danger)
+From [Figma Foundations](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=9762-187&p=f&m=dev):
+
+| Semantic Token | Light | Dark | CSS var |
+|----------------|-------|------|---------|
+| Bg/Positive/Default | #00c86e | #00c86e | `--bg-success-default` |
+| Bg/Positive/Tertiary | #d4f1e4 | — | `--bg-success-tertiary` |
+| Bg/Warning/Default | #ffb400 | #ffb400 | `--bg-warning-default` |
+| Bg/Warning/Tertiary | #f9ebca | — | `--bg-warning-tertiary` |
+| Bg/Danger/Default | #ed2635 | #ed2635 | `--bg-danger-default` |
+| Bg/Danger/Tertiary | #fbdee1 | — | `--bg-danger-tertiary` |
+| Text/Success | #00c86e | #00c86e | `--text-success-default` |
+| Text/Urgent | #ed2635 | #ed2635 | `--text-danger-default` |
+| Text/Attention | #ffb400 | #ffb400 | `--text-warning-default` |
+| Border/Urgent | #93212f | — | `--border-danger-default` |
+
+### Utilities (Overlays)
+| Token | Light | Dark | CSS var |
+|-------|-------|------|---------|
+| Bg/Utilities/Blanket | rgba(0,0,0,0.70) | rgba(0,0,0,0.70) | `--bg-blanket` |
+| Bg/Utilities/Scrim | rgba(255,255,255,0.80) | rgba(0,0,0,0.80) | `--bg-scrim` |
+
+---
+
+## Migration: Old → New Variable Structure
+
+When refactoring from old tokens to new, use this mapping:
+
+| Old token | New token | Notes |
+|-----------|-----------|-------|
+| `--base-1` | `--bg-base-default` | Primary surfaces (cards, modals, panels) |
+| `--base-2` | `--bg-base-secondary` | Page background, negative space |
+| `--base-3` | `--bg-base-tertiary` | Tertiary surfaces, dividers |
+| `--base-4` | `--bg-base-tertiary` or `--text-disabled-default` | Input fills, disabled surfaces |
+| `--base-5` | `--border-base-default` | Borders |
+| `--teal` | `--bg-brand-default` / `--text-brand-default` / `--border-brand-default` | Per context (fill, text, border) |
+| `--teal-t1`, `--teal-t2` | `--bg-brand-tertiary` | Hover, selected states |
+| `--text-primary` | `--text-base-default` | Primary text |
+| `--text-secondary` | `--text-base-secondary` | Secondary text |
+| `--text-tertiary`, `--text-muted` | `--text-base-secondary` | Muted text |
+| `--text-disabled` | `--text-disabled-default` | Disabled text |
+| `--gray-1` … `--gray-9` | Use semantic tokens above | Do not use primitives directly in components |
+
+### Migration rules
+1. Replace `--base-1` with `--bg-base-default` for surfaces.
+2. Replace `--base-5` with `--border-base-default` for borders.
+3. Replace `--teal` with `--bg-brand-default` (fills), `--text-brand-default` (text/icons), or `--border-brand-default` (borders).
+4. Replace `--teal-t1` / `--teal-t2` with `--bg-brand-tertiary` for selected/hover.
+5. Replace `--text-primary` with `--text-base-default`.
+6. Replace `--text-secondary` with `--text-base-secondary`.
+7. Use `--bg-danger-default`, `--bg-success-default`, `--bg-warning-default` for semantic fills; `--text-danger-default`, `--text-success-default`, `--text-warning-default` for semantic text; `--border-danger-default` for error borders.
+
+---
+
+## Typography
+- Font family: `IBM Plex Sans`
+- Font sizes: 10, 12, 14, 16, 20, 24, 32, 40, 48, 64 (px)
+- Weights: Thin, Light, Regular, Italic, Medium, Semibold, Bold
+- Line heights: `--leading-tight` 16px, `--leading-snug` 22px, `--leading-normal` 24px, `--leading-relaxed` 26px
+- Utility sizes: `--text-xs` 12px, `--text-sm` 14px, `--text-base` 16px, `--text-lg` 18px, `--text-xl` 20px
+- Weights: `--font-regular` 400, `--font-medium` 500, `--font-semibold` 600
+
+---
+
+## Spacing (Space scale)
+| Token | Value | Token | Value |
+|-------|-------|-------|-------|
+| Space/0 | 0 | Space/400 | 16 |
+| Space/50 | 2 | Space/600 | 24 |
+| Space/100 | 4 | Space/800 | 32 |
+| Space/200 | 8 | Space/1200 | 48 |
+| Space/300 | 12 | Space/1600 | 64 |
+| | | Space/2400 | 96 |
+| | | Space/4000 | 160 |
+
+CSS aliases: `--space-1` 4px, `--space-2` 8px, `--space-3` 12px, `--space-4` 16px, `--space-5` 20px, `--space-6` 24px, `--space-8` 32px, `--space-10` 40px, `--space-12` 48px
+
+---
+
+## Radius
+| Token | Value |
+|-------|-------|
+| Radius/100 | 4 |
+| Radius/200 | 8 |
+| Radius/300 | 12 |
+| Radius/400 | 16 |
+| Radius/600 | 24 |
+| Radius/Full | 9999 |
+
+CSS aliases: `--radius-sm` 4px, `--radius-md` 8px, `--radius-lg` 12px, `--radius-full` 9999px
+
+---
+
+## Stroke
+| Token | Value |
+|-------|-------|
+| Border Thin | 0.5 |
+| Border Thick | 1 |
+| Border Focus | 2 |
+| Border Selected | 4 |
+
+---
+
+## Depth (elevation)
+| Token | Value |
+|-------|-------|
+| Depth/0 | 0 |
+| Depth/25 | 1 |
+| Depth/50 | 2 |
+| Depth/100 | 4 |
+| Depth/200 | 8 |
+| Depth/400 | 16 |
+| Depth/800 | 32 |
+| Depth/1200 | 48 |
+
+---
+
+## Responsive
+| Device | Width | Scale |
+|--------|-------|-------|
+| Desktop | 1200 | 1 |
+| Tablet | 768 | 1 |
+| Mobile | 375 | 1.25 |
+
+Breakpoints: use 375, 768, 1200 for mobile-first media queries.
+
+---
+
+## Design System Setup
+
+### globals.css
+- Define CSS variables for light/dark per `[data-theme="light"]` and `[data-theme="dark"]`.
+- Use token values from design-system-tokens.mdc (derived from [Figma Foundations](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=9762-187&p=f&m=dev)).
+- Map semantic tokens to primitives; never hardcode hex in components.
+
+### Tailwind config
+- Extend theme with token references: `colors: { base: { 1: 'var(--bg-base-default)', ... }, ... }`.
+- No hardcoded values; use `var(--token-name)` or arbitrary values `bg-[var(--bg-base-default)]`.
+
+### ThemeProvider
+- Set `data-theme` on `<html>`: `light` (default) or `dark`.
+- Persist preference to localStorage; optionally respect `prefers-color-scheme`.
+
+### New project checklist
+1. Copy `.cursor/rules/` to new repo.
+2. Create `globals.css` with token definitions.
+3. Add Tailwind config extending tokens.
+4. Add ThemeProvider wrapping app.
+5. Verify all tokens match Figma foundations.

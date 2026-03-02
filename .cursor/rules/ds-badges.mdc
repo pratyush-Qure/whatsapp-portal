@@ -1,0 +1,43 @@
+---
+description: Badges / Status indicators rules – derived from Figma
+globs: **/*{Badge,Status}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Badges / Status
+
+**Figma:** [Badges / Status](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=7641-2142&p=f&m=dev)
+
+Badge/status variants below are derived from Figma component library node 7641:2142.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Success light | `--bg-success-tertiary`, `--text-success-default` |
+| Success filled | `--bg-success-default`, `--text-brand-on-brand` |
+| Warning light | `--bg-warning-tertiary`, `--text-warning-default` |
+| Warning filled | `--bg-warning-default`, `--text-base-default` |
+| Danger light | `--bg-danger-tertiary`, `--text-danger-default` |
+| Danger filled | `--bg-danger-default`, `--text-brand-on-brand` |
+| Brand | `--bg-brand-default`, `--text-brand-on-brand` |
+
+---
+
+## Variants (from Figma)
+
+| Variant | Light | Filled |
+|---------|-------|--------|
+| Success | `--bg-success-tertiary`; `--text-success-default` | `--bg-success-default`; `--text-brand-on-brand` |
+| Attention/Warning | `--bg-warning-tertiary`; `--text-warning-default` | `--bg-warning-default`; `--text-base-default` |
+| Urgent/Danger | `--bg-danger-tertiary`; `--text-danger-default` | `--bg-danger-default`; `--text-brand-on-brand` |
+| Brand | — | `--bg-brand-default`; `--text-brand-on-brand` |
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- Do not invent variants; implement only what exists in Figma node 7641:2142.

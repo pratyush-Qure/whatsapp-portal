@@ -1,0 +1,58 @@
+---
+description: Dropdown / Select rules – derived from Figma
+globs: **/*{Dropdown,Select,Combobox,ComboBox,MenuList,OptionList}*.{ts,tsx}
+alwaysApply: false
+---
+
+# Dropdown / Select
+
+**Figma:** [Dropdown / Select](https://www.figma.com/design/AW4jk9SLPKlSqYt6NZ1QK5/Qure-%3C%3E-Figma-Design-system?node-id=128-10423&p=f&m=dev)
+
+Trigger, menu, items, and selected state below are derived from Figma node 128:10423.
+
+---
+
+## Variables (from design-system-tokens.mdc)
+
+| Use | Token |
+|-----|-------|
+| Popover surface | `--bg-base-default` |
+| Popover border | `--border-base-default` |
+| Item default | `--text-base-default` |
+| Item hover | `--bg-brand-tertiary` |
+| Item selected | `--bg-brand-tertiary` |
+| Item disabled | `--text-disabled-default` |
+
+---
+
+## Structure
+
+### Trigger
+- Same styling as Input.
+- Chevron icon right.
+- `cursor-pointer`.
+
+### Menu
+- **Position:** Absolute below trigger.
+- **Container:** `--bg-base-default` surface, `--border-base-default` border.
+- **Max height:** max-h-60 overflow-y-auto.
+- **Shadow:** shadow-lg.
+
+---
+
+## Item states
+
+| State | Background | Text |
+|-------|-------------|------|
+| Default | Transparent | `--text-base-default` |
+| Hover | `--bg-brand-tertiary` | `--text-base-default` |
+| Selected | `--bg-brand-tertiary` | `--text-brand-default` |
+| Disabled | Transparent | `--text-disabled-default` |
+
+---
+
+## Implementation guidelines
+
+- Use tokens from `design-system-tokens.mdc` only.
+- A11y: `role="listbox"` for menu; `role="option"` for items; keyboard (Arrow keys, Enter, Escape).
+- Do not invent variants; implement only what exists in Figma node 128:10423.
